@@ -41,7 +41,11 @@ def populationparser():
         pop_list.append([row[0], row[2]])
     return pop_list
 
-
+def incomebirth():
+    '''Manipulates return values of socioparser() and birthparser()
+and return a list containing values to be used for colleration
+income-birth correlation'''
+    
 
 
 
