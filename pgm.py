@@ -1,5 +1,6 @@
 """Created by Harrison Mbugi"""
 
+
 from csv import *
 
 #socio_list = []
