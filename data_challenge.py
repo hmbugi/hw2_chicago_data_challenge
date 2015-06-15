@@ -43,7 +43,7 @@ def populationparser():
 
 def incomebirth():
     '''Manipulates return values of socioparser() and birthparser()
-and return a list containing values to be used for colleration
+and return a list containing values needed for colleration
 income-birth correlation'''
     incomebirth, x, y, xy, x2, y2 = ([] for i in range(6)) #same as [[]]*6 . Both initialize empty lists to variables
     for n in range (1,78): #range start from index 1 avoiding headings and end at index 77
@@ -57,8 +57,30 @@ income-birth correlation'''
 
 def incomedeath():
     '''Manipulates return values of socioparser() and birthparser()
-and return a list containing values to be used for colleration
+and return a list containing values needed for colleration
 income-birth correlation'''
     incomedeath, x, y, xy, x2, y2 = ([] for i in range(6)) #same as [[]]*6 . Both initialize empty lists to variables
+    for n in range (1,78): #range start from index 1 avoiding headings and end at index 77
+        x.append(int(socioparser()[n][2])) #it is index n-1 because n starts from 1 not 0.
+        y.append(int(deathparser()[n][1]))
+        xy.append(x[n-1]*y[n-1])
+        x2.append(x[n-1]**2) #equivalent to pow(x[n-1],2)
+        y2.append(y[n-1]**2)
+        incomedeath.append([x[n-1], y[n-1], xy[n-1], x2[n-1], y2[n-1]])
+    return incomedeath
+
+def correlation(clist):
+    '''Calculate correlation value and return it'''
+    sx, sy, sxy, sx2, sy2 = [0]*5 #initializing variables
+    n = len(clist)
+    for row in clist:
+        sx = sx + row[0]
+        sy = sy + row[1]
+        sxy = sxy + row[2]
+        sx2 = sx2 + row[3]
+        sy2 = sy2 + row[4]
+    r = ((n*sxy)-(sx*sy))/pow(((n*sx2)-pow(sx,2))*((n*sy2)-pow(sy,2)),0.5)
+    return r
+
 
 
