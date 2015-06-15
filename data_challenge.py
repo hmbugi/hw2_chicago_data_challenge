@@ -55,6 +55,10 @@ income-birth correlation'''
         incomebirth.append([x[n-1], y[n-1], xy[n-1], x2[n-1], y2[n-1]]) 
     return incomebirth
 
-
+def incomedeath():
+    '''Manipulates return values of socioparser() and birthparser()
+and return a list containing values to be used for colleration
+income-birth correlation'''
+    incomedeath, x, y, xy, x2, y2 = ([] for i in range(6)) #same as [[]]*6 . Both initialize empty lists to variables
 
 
