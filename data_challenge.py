@@ -11,7 +11,7 @@ and return a list containing these values from the csv file '''
     soc_obj = open("socio_eco_ind.csv")
     soc_reader = reader(soc_obj)
     for row in soc_reader:
-        soc_list.append([row[0], row[1], row[7], row[8])
+        soc_list.append([row[0], row[1], row[7], row[8]])
     soc_obj.close()
     return soc_list
         
@@ -74,6 +74,20 @@ income-death correlation'''
         incomedeath.append([x[n-1], y[n-1], xy[n-1], x2[n-1], y2[n-1]])
     return incomedeath
 
+def hardshipdeath():
+    '''Manipulates return values of socioparser() and birthparser()
+and return a list containing values needed for calculating the coefficient of
+hardship-death correlation'''
+    hardshipdeath, x, y, xy, x2, y2 = ([] for i in range(6)) #same as [[]]*6 . Both initialize empty lists to variables
+    for n in range (1,78): #range start from index 1 avoiding headings and end at index 77
+        x.append(int(socioparser()[n][3])) #it is index n-1 because n starts from 1 not 0.
+        y.append(int(deathparser()[n][1]))
+        xy.append(x[n-1]*y[n-1])
+        x2.append(x[n-1]**2) #equivalent to pow(x[n-1],2)
+        y2.append(y[n-1]**2)
+        incomedeath.append([x[n-1], y[n-1], xy[n-1], x2[n-1], y2[n-1]])
+    return hardshipdeath
+
 def correlation(clist):
     '''Calculate correlation value and return it'''
     sx, sy, sxy, sx2, sy2 = [0]*5 #initializing variables
@@ -86,7 +100,4 @@ def correlation(clist):
         sy2 = sy2 + row[4]
     r = ((n*sxy)-(sx*sy))/pow(((n*sx2)-pow(sx,2))*((n*sy2)-pow(sy,2)),0.5)
     return r
-
-
-
 
