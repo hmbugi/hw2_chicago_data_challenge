@@ -11,6 +11,7 @@ per capita income and hardship index into a list  '''
     soc_reader = reader(soc_obj)
     for row in soc_reader:
         soc_list.append([row[0], row[1], row[7], row[8]])
+    soc_obj.close()
     return soc_list
         
 def birthparser():
@@ -20,6 +21,7 @@ def birthparser():
     bir_reader = reader(bir_obj)
     for row in bir_reader:
         bir_list.append([row[0], row[2]])
+    bir_obj.close()
     return bir_list
 
 def deathparser():
@@ -30,6 +32,7 @@ and cumulative death ranks '''
     dea_reader = reader(dea_obj)
     for row in dea_reader:
         dea_list.append([row[1], row[5], row[4]])
+    dea_obj.close()
     return dea_list
 
 def populationparser():
@@ -39,6 +42,7 @@ def populationparser():
     pop_reader = reader(pop_obj)
     for row in pop_reader:
         pop_list.append([row[0], row[2]])
+    pop_obj.close()
     return pop_list
 
 def incomebirth():
@@ -81,6 +85,7 @@ def correlation(clist):
         sy2 = sy2 + row[4]
     r = ((n*sxy)-(sx*sy))/pow(((n*sx2)-pow(sx,2))*((n*sy2)-pow(sy,2)),0.5)
     return r
+
 
 
 
