@@ -61,7 +61,7 @@ income-birth correlation'''
     return incomebirth
 
 def incomedeath():
-    '''Manipulates return values of socioparser() and birthparser()
+    '''Manipulates return values of socioparser() and deathparser()
 and return a list containing values needed for calculating the coefficient of
 income-death correlation'''
     incomedeath, x, y, xy, x2, y2 = ([] for i in range(6)) #same as [[]]*6 . Both initialize empty lists to variables
@@ -74,8 +74,22 @@ income-death correlation'''
         incomedeath.append([x[n-1], y[n-1], xy[n-1], x2[n-1], y2[n-1]])
     return incomedeath
 
-def hardshipdeath():
+def hardshipbirth():
     '''Manipulates return values of socioparser() and birthparser()
+and return a list containing values needed for calculating the coefficient of
+hardship-birth correlation'''
+    hardshipbirth, x, y, xy, x2, y2 = ([] for i in range(6)) #same as [[]]*6 . Both initialize empty lists to variables
+    for n in range (1,78): #range start from index 1 avoiding headings and end at index 77
+        x.append(int(socioparser()[n][3])) #it is index n-1 because n starts from 1 not 0.
+        y.append(float(birthparser()[n][1]))
+        xy.append(x[n-1]*y[n-1])
+        x2.append(x[n-1]**2) #equivalent to pow(x[n-1],2)
+        y2.append(y[n-1]**2)
+        hardshipbirth.append([x[n-1], y[n-1], xy[n-1], x2[n-1], y2[n-1]]) 
+    return hardshipbirth
+
+def hardshipdeath():
+    '''Manipulates return values of socioparser() and deathparser()
 and return a list containing values needed for calculating the coefficient of
 hardship-death correlation'''
     hardshipdeath, x, y, xy, x2, y2 = ([] for i in range(6)) #same as [[]]*6 . Both initialize empty lists to variables
@@ -85,7 +99,7 @@ hardship-death correlation'''
         xy.append(x[n-1]*y[n-1])
         x2.append(x[n-1]**2) #equivalent to pow(x[n-1],2)
         y2.append(y[n-1]**2)
-        incomedeath.append([x[n-1], y[n-1], xy[n-1], x2[n-1], y2[n-1]])
+        hardshipdeath.append([x[n-1], y[n-1], xy[n-1], x2[n-1], y2[n-1]])
     return hardshipdeath
 
 def correlation(clist):
