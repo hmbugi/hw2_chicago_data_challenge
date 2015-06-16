@@ -115,3 +115,10 @@ def correlation(clist):
     r = ((n*sxy)-(sx*sy))/pow(((n*sx2)-pow(sx,2))*((n*sy2)-pow(sy,2)),0.5)
     return r
 
+def main():
+    print("The correlation coefficient between per capita income and birth is ", correlation(incomebirth()))
+    print("The correlation coefficient between per capita income and death is ", correlation(incomedeath()))
+    print("The correlation coefficient between hardship index and birth is ", correlation(hardshipbirth()))
+    print("The correlation coefficient between hardship index and death is ", correlation(hardshipdeath()))
+
+main()
