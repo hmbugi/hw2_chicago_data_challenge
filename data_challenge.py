@@ -37,15 +37,6 @@ and return a list containing these values from the csv file '''
     dea_obj.close()
     return dea_list
 
-def populationparser():
-    ''' Fetching community area number and population in 2010 '''
-    pop_list = []
-    pop_obj = open("population_2010.csv")
-    pop_reader = reader(pop_obj)
-    for row in pop_reader:
-        pop_list.append([row[0], row[2]])
-    return pop_list
-
 def incomebirth():
     '''Manipulates return values of socioparser() and birthparser()
 and return a list containing values needed for calculating the coefficient of
