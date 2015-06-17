@@ -16,12 +16,12 @@ class TestFunctions(unittest.TestCase):
 
     def test_parserreturn(self):
         '''Tests if the parsers return lists''' 
-        self.assertTrue(type(socioparser()), [])
-        self.assertTrue(type(birthparser()), [])
-        self.assertTrue(type(deathparser()), [])
+        self.assertEqual(type(socioparser()), type([]))
+        self.assertEqual(type(birthparser()), type([]))
+        self.assertEqual(type(deathparser()), type([]))
 
     def test_rightrow(self):
-        '''Tests if there a re right number of rows(77) in each parsed dataset'''
+        '''Tests if there are right number of rows(77) in each list containing data ready for correlation'''
         self.assertEqual(len(incomebirth()), 77)
         self.assertEqual(len(incomedeath()), 77)
         self.assertEqual(len(hardshipbirth()), 77)
