@@ -1,7 +1,7 @@
 """Created by Harrison Mbugi"""
 
 from csv import *
-from os import *
+import os
 
 def fileexist(filename):
     ''' Return true if the file exists '''
