@@ -9,8 +9,15 @@ class TestFunctions(unittest.TestCase):
         self.assertTrue(fileexist('death_causes.csv'), True)
 
     def test_isreadable(self):
+        '''Tests if all the dataset files are readable'''
         self.assertTrue(isreadable('socio_eco_ind.csv'), True)
         self.assertTrue(isreadable('health_ind.csv'), True)
         self.assertTrue(isreadable('death_causes.csv'), True)
+
+    def test_parserreturn(self):
+        '''Tests if the parsers return lists''' 
+        self.assertTrue(type(socioparser()), [])
+        self.assertTrue(type(birthparser()), [])
+        self.assertTrue(type(deathparser()), [])
 
 unittest.main()
