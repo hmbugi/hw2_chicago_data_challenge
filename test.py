@@ -20,9 +20,13 @@ class TestFunctions(unittest.TestCase):
         self.assertTrue(type(birthparser()), [])
         self.assertTrue(type(deathparser()), [])
 
-    def test_parserreturnlength(self):
-        self.assertTrue(len(socioparser()), 77)
-        self.assertTrue(len(birthparser()), 77)
-        self.assertTrue(len(deathparser()), 77)
+    def test_rightrow(self):
+        '''Tests if there a re right number of rows(77) in each parsed dataset'''
+        self.assertEqual(len(incomebirth()), 77)
+        self.assertEqual(len(incomedeath()), 77)
+        self.assertEqual(len(hardshipbirth()), 77)
+        self.assertEqual(len(hardshipdeath()), 77)
+
+    
 
 unittest.main()
