@@ -1,7 +1,12 @@
 """Created by Harrison Mbugi"""
 
 from csv import *
+import os
 
+def fileexist(filename):
+    ''' Return true if the file exists '''
+    return os.path.isfile(filename)
+        
 
 def socioparser():
     ''' Fetching community area number & name,
@@ -104,9 +109,11 @@ def correlation(clist):
         sx2 = sx2 + row[3]
         sy2 = sy2 + row[4]
     r = ((n*sxy)-(sx*sy))/pow(((n*sx2)-pow(sx,2))*((n*sy2)-pow(sy,2)),0.5)
-    return r
+    return round(r,2)
 
 def main():
+    print(fileexist('socio_eco1_ind.csv'))
+    print(isreadable('1.txt')
     print("The correlation coefficient between per capita income and birth is ", correlation(incomebirth()))
     print("The correlation coefficient between per capita income and death is ", correlation(incomedeath()))
     print("The correlation coefficient between hardship index and birth is ", correlation(hardshipbirth()))
