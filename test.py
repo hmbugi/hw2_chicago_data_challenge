@@ -7,7 +7,3 @@ class TestFunctions(unittest.TestCase):
         self.assertTrue(fileexist('socio_eco_ind.csv'), True)
         self.assertTrue(fileexist('health_ind.csv'), True)
         self.assertTrue(fileexist('death_causes.csv'), True)
-    
-print(fileexist('socio_eco_ind.csv'))
-
-unittest.main()
