@@ -135,9 +135,39 @@ def rstrength(r):
         return "very strong negative relationship"
 
 def main():
-    print("The correlation coefficient between per capita income and birth is ", correlation(incomebirth()))
-    print("The correlation coefficient between per capita income and death is ", correlation(incomedeath()))
-    print("The correlation coefficient between hardship index and birth is ", correlation(hardshipbirth()))
-    print("The correlation coefficient between hardship index and death is ", correlation(hardshipdeath()))
-
+    status = "True"
+    print("\t********** CHICAGO DATA CHALLENGE **********\t\n")
+    print("Using the city of chicago data portal to find the relationship between per capital income, hardship index and birthrate, average annual deaths")
+    print("Checking if the dataset files exists and readable.......\n")
+    
+    if fileexist("socio_eco_ind.csv") and isreadable("socio_eco_ind.csv"):
+        print("File socio_eco_ind.csv exists and is readable")
+    else:
+        print("**Problems with file socio_eco_ind.csv in the current directory. Correct this problem first")
+        status = "False"
+    if fileexist("health_ind.csv") and isreadable("health_ind.csv"):
+        print("File health_ind.csv exists and is readable")
+    else:
+        print("**Problems with file health_ind.csv in the current directory. Correct this problem first")
+        status = "False"
+    if fileexist("death_causes.csv") and isreadable("death_causes.csv"):
+        print("File death_causes.csv exists and is readable")
+    else:
+        print("**Problems with file death_causes.csv in the current directory. Correct this problem first")
+        status = "False"
+    print()
+    
+    if status is "True":
+        print("The correlation coefficient between per capita income and birth rate is ", correlation(incomebirth()))
+        print("This means there is a "+rstrength(correlation(incomebirth()))+ " between per capita income and birth rate\n")
+        
+        print("The correlation coefficient between per capita income and death is ", correlation(incomedeath()))
+        print("This means there is a "+rstrength(correlation(incomedeath()))+ " between per capita income and average annual number of deaths\n")
+        
+        print("The correlation coefficient between hardship index and birth is ", correlation(hardshipbirth()))
+        print("This means there is a "+rstrength(correlation(hardshipbirth()))+ " between hardship index and birth rate\n")
+        
+        print("The correlation coefficient between hardship index and death is ", correlation(hardshipdeath()))
+        print("This means there is a "+rstrength(correlation(hardshipdeath()))+ " between hardship index and average annual number of deaths\n")
+        
 main()
