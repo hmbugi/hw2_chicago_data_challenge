@@ -114,6 +114,26 @@ def correlation(clist):
     r = ((n*sxy)-(sx*sy))/pow(((n*sx2)-pow(sx,2))*((n*sy2)-pow(sy,2)),0.5)
     return round(r,2)
 
+def rstrength(r):
+    if  .75 <= r <= 1.0:
+        return "very strong positive relationship"
+    elif .5 <= r < .75:
+        return "strong positive relationship"
+    elif .25 <= r < .5:
+        return "moderate positive relationship"
+    elif 0.0 < r < .25:
+        return "weak positive relationship"
+    elif 0.0:
+        return "there is no relationship"
+    elif -.25 < r < 0.0:
+        return "weak negative relationship"
+    elif -.5 < r <= -.25:
+        return "moderate negative relationship"
+    elif -.75 < r <= -.5:
+        return "strong negative relationship"
+    elif -1.0 <= r <= -.75:
+        return "very strong negative relationship"
+
 def main():
     print("The correlation coefficient between per capita income and birth is ", correlation(incomebirth()))
     print("The correlation coefficient between per capita income and death is ", correlation(incomedeath()))
