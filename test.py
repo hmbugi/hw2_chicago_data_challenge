@@ -27,6 +27,11 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(len(hardshipbirth()), 77)
         self.assertEqual(len(hardshipdeath()), 77)
 
-    
+    def test_correlation(self):
+        '''Tests correlation coefficient values'''
+        self.assertEqual(correlation(incomebirth()), -.37)
+        self.assertEqual(correlation(incomedeath()), .02)
+        self.assertEqual(correlation(hardshipbirth()), .49)
+        self.assertEqual(correlation(hardshipdeath()), -.05)
 
 unittest.main()
